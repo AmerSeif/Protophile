@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Protophile.Models.ProtofolioItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <h2 style="margin-left: 145px;">protofolio Item</h2>
+
+<link href="~/Content/freelancer.css" rel="stylesheet" />
+<p style="margin-left: 145px;">
+    @Html.ActionLink("Create New", "Create",null ,new { @class = "btn btn-success" })
+</p>
+<div class="card-deck" style="margin-left: 130px; margin-right: 130px">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-3" @*style="width: 400px"*@>
+            <div class="card">
+                <img class="card-img-top" src="~/Uploads/@item.Image" @*style="min-height:440px"*@ alt="Card image">
+                <div class="card-body" style="padding: 0;">
+                    <h4 class="card-title" style="padding:10px;padding-top:15PX">@item.ProtofolioName</h4>
+                    <p class="card-text" style="padding-left:10px">@item.Description</p>
+                    <div class="card-footer">
+                        <a asp-action="Edit" href="https://localhost:44331/ProtofolioItems/Edit/@item.Id" class="btn btn-primary" asp-route-Id="@item.Id"><span class="fa fa-edit"></span> Edit</a>
+                        <a asp-action="Details" href="https://localhost:44331/ProtofolioItems/Details/@item.Id" asp-route-Id="@item.Id" class="btn btn-secondary"><span class="fa fa-eye"> View</span></a>
+                        <a asp-action="Delete" href="https://localhost:44331/ProtofolioItems/Delete/@item.Id" asp-route-Id="@item.Id" class="btn btn-danger"><span class="fa fa-trash"></span> Delete</a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+</div>
